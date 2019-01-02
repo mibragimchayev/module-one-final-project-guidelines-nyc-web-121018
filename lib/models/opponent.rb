@@ -17,32 +17,39 @@ class Opponent < ActiveRecord::Base
     puts "Intelligence: #{self.intelligence}"
     puts "Strength: #{self.strength}"
     puts "Speed: #{self.speed}"
+    puts "\n"
   end
 
-  def chess_victor
-    self.superheros.where("intelligence < ?", self.intelligence)
-  end
 
-  def arms_wrestling_victor
-    self.superheros.where("strength < ?", self.strength)
-  end
 
-  def speed_walking_victor
-    self.superheros.where("speed < ?", self.speed)
-  end
-
-  def battle_superheroes
+  def battle_30_heroes
     Battle.delete_all #redundancy check to clear previous game battles
-    50.times do
+    30.times do
       Battle.create(name: "Battle of #{Faker::Address.unique.city}", opponent_id: Opponent.last.id, superhero_id: Superhero.ids.sample)
     end
   end
 
-end
+  def battled_superheroes
+    names = self.battles.map {|battle| battle.superhero.name}
+    unique_names = names.uniq
+  end
 
-# def show(x)
-#   puts "Name: #{Opponent.last.name}"
-#   puts "Name: #{x.intelligence}"
-#   puts "Name: #{x.strength}"
-#   puts "Name: #{x.speed}"
-# end
+  def print_battled_heroes_names
+    puts "You battled with the following Superheroes: "
+    sleep(0.75)
+    battled_superheroes.each {|name| puts " - #{name}"}
+    puts "\n"
+  end
+
+  def chess_victor
+    self.battled_superheroes.where("intelligence < ?", self.intelligence)
+  end
+
+  def arms_wrestling_victor
+    self.battled_superheroes.where("strength < ?", self.strength)
+  end
+
+  def speed_walking_victor
+    self.battled_superheroes.where("speed < ?", self.speed)
+  end
+end

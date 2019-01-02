@@ -1,8 +1,49 @@
-require_relative '../db/seeds.rb'
+# require_relative '../db/seeds.rb'
 
 def welcome
   # puts out a welcome message here!
   Battle.delete_all # clears all battles from previous user input
+  puts "
+                   `;###################################,                                  `###################################i.
+                     .*xWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW:                                  .WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWM+,
+                       `;nWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW:              .    .              .WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWxi`
+                          ;xWWWWWWWWWWWWWWWWWWWWWWWWWWWWi             `#    *.             :WWWWWWWWWWWWWWWWWWWWWWWWWWWWMi`
+                           `*WWWWWWWWWWWWWWWWWWWWWWWWWWWz             ,W`   xi             +WWWWWWWWWWWWWWWWWWWWWWWWWWW+`
+                             ,xWWWWWWWWWWWWWWWWWWWWWWWWWW.            iWnnxnW+            `MWWWWWWWWWWWWWWWWWWWWWWWWWM:
+                              `#WWWWWWWWWWWWWWWWWWWWWWWWWn`           #WWWWWWx            #WWWWWWWWWWWWWWWWWWWWWWWWWn.
+                                +WWWWWWWWWWWWWWWWWWWWWWWWWz`          xWWWWWWW`          +WWWWWWWWWWWWWWWWWWWWWWWWWz`
+                                 +WWWWWWWWWWWWWWWWWWWWWWWWWx;`       .WWWWWWWW,        :nWWWWWWWWWWWWWWWWWWWWWWWWWz`
+                                 `zWWWWWWWWWWWWWWWWWWWWWWWWWWMz*:,,,;+WWWWWWWWz;:,,:i#xWWWWWWWWWWWWWWWWWWWWWWWWWWx`
+                                  .MWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW@@WWWWWWWWWWWWW@@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW,
+                                   iWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW+
+                                   `MWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW.
+                                    +WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWz
+                                    :@WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWi
+                                    `WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW,
+                                     MWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
+                                     MWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
+                                     MWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW`
+                                    `WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW,
+                                    ,WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW;
+                                    :z######zznxMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWMMnzz######zi
+                                                 `.,i+zMWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWMn#i:..
+                                                        .;#MWWWWWWWWWWWWWWWWWWWWWWWWWWWWMzi,`
+                                                           `:#MWWWWWWWWWWWWWWWWWWWWWWWz:`
+                                                              `ixWWWWWWWWWWWWWWWWWWM*.
+                                                                `iMWWWWWWWWWWWWWWW*`
+                                                                  `#WWWWWWWWWWWWz.
+                                                                    ;WWWWWWWWWW*
+                                                                     :WWWWWWWW;
+                                                                      :WWWWWWi
+                                                                       iWWWW+
+                                                                        zWWx`
+                                                                        .WW:
+                                                                         zx
+                                                                         ;*
+                                                                         `,
+
+                                                                                                    "
+  sleep(2)
   puts "Welcome contender!"
   sleep(0.75)
   puts "Let's test your worthiness..."
@@ -113,13 +154,18 @@ def questions_complete
   puts "\n"
 end
 
+def opp
+  Opponent.last
+end
+
 def end_game
   puts "Continue? (y/n)"
   game = gets.chomp
   if game != 'y' && game != 'n'
-    "Please select 'y' or 'n'"
+    puts "Please select 'y' or 'n'"
     end_game
   end
+  game
 end
 
 def game_choices
@@ -129,4 +175,28 @@ def game_choices
   puts "3. See Superheroes I've beat in a game of chess"
   puts "4. See Superheroes I've beat in arm wrestling"
   puts "5. See Superheroes I've beat in a friendly game of speed walking"
+end
+
+def choice_selections
+  input = gets.chomp
+  puts "\n"
+  case input
+    when "1"
+      opp.battle_30_heroes
+    when "2"
+      opp.print_battled_heroes_names
+    when "3"
+    when "4"
+    when "5"
+    else
+      puts "Please select from one of the options."
+      puts "\n"
+      sleep(0.75)
+      game_time
+  end
+end
+
+def game_time
+  game_choices
+  choice_selections
 end

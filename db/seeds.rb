@@ -11,12 +11,4 @@ def populate_superheros_table(superhero_ids)
   end
 end
 
-def populate_battles_table
-  Battle.delete_all #redundancy check to clear previous game battles
-  50.times do
-    Battle.create(name: "Battle of #{Faker::Address.unique.city}", opponent_id: Opponent.last.id, superhero_id: Superhero.ids.sample)
-  end
-end
-
 populate_superheros_table(superhero_ids)
-populate_battles_table
