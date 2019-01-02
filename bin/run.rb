@@ -1,8 +1,11 @@
 require_relative '../config/environment'
 
 welcome
-sleep(2)
-create_opponent
+user = Opponent.create_opponent
+# binding.pry
+questions_complete
+user.show_stats
+
 # TODO: figure out where this goes and how to implement
 # continue = 'yes'
 # while continue == "yes"
