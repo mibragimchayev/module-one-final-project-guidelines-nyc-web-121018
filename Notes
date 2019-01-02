@@ -1,1 +1,2 @@
 1. Had a pluralization issue with class Superhero. AR exptected table name superheros, instead of grammatical superheroes. Got an error when testing in console: could not find table 'superheros'.
+2. gets takes in strings, i was setting logic to match a fixnum

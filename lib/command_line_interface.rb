@@ -1,5 +1,8 @@
+require_relative '../db/seeds.rb'
+
 def welcome
   # puts out a welcome message here!
+  Battle.delete_all # clears all battles from previous user input
   puts "Welcome contender!"
   sleep(0.75)
   puts "Let's test your worthiness..."
@@ -110,11 +113,20 @@ def questions_complete
   puts "\n"
 end
 
-# TODO: figure out if this method should be here or in Opponent class...
-# def show_stats(create_opponent)
-#   puts "Here are your stats:"
-#   puts "Name: #{create_opponent.name}"
-#   puts "Intelligence: #{create_opponent.intelligence}"
-#   puts "Strength: #{create_opponent.strength}"
-#   puts "Speed: #{create_opponent.speed}"
-# end
+def end_game
+  puts "Continue? (y/n)"
+  game = gets.chomp
+  if game != 'y' && game != 'n'
+    "Please select 'y' or 'n'"
+    end_game
+  end
+end
+
+def game_choices
+  puts "What would you like to do?"
+  puts "1. Battle some Superheroes in chess, arm wrestling, and speed walking" # run populate_battles_table from seeds.rb
+  puts "2. See all of the Superheroes I've battled"
+  puts "3. See Superheroes I've beat in a game of chess"
+  puts "4. See Superheroes I've beat in arm wrestling"
+  puts "5. See Superheroes I've beat in a friendly game of speed walking"
+end

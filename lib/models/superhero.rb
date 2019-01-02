@@ -1,4 +1,8 @@
 class Superhero < ActiveRecord::Base
-  has_many :comparisons
-  has_many :opponents, through: :comparisons
+  has_many :battles
+  has_many :opponents, through: :battles
+
+  def self.ids
+    self.all.map(&:id)
+  end
 end

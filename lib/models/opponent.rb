@@ -1,6 +1,6 @@
 class Opponent < ActiveRecord::Base
   has_many :battles
-  has_many :superheros, through: :comparisons
+  has_many :superheros, through: :battles
 
   # def find_contender
   #   puts "What's your name"
@@ -19,9 +19,25 @@ class Opponent < ActiveRecord::Base
     puts "Speed: #{self.speed}"
   end
 
-  def smarter_than
-    Superhero.where("intelligence < ?", self.intelligence)
+  def chess_victor
+    self.superheros.where("intelligence < ?", self.intelligence)
   end
+
+  def arms_wrestling_victor
+    self.superheros.where("strength < ?", self.strength)
+  end
+
+  def speed_walking_victor
+    self.superheros.where("speed < ?", self.speed)
+  end
+
+  def battle_superheroes
+    Battle.delete_all #redundancy check to clear previous game battles
+    50.times do
+      Battle.create(name: "Battle of #{Faker::Address.unique.city}", opponent_id: Opponent.last.id, superhero_id: Superhero.ids.sample)
+    end
+  end
+
 end
 
 # def show(x)
