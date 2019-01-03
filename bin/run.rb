@@ -9,7 +9,7 @@ def run
   initial_battle
 end
 
-# run
+run
 game = "y"
 while game == "y"
   game_time

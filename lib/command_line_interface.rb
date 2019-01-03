@@ -230,24 +230,48 @@ def choice_selections
       else
         opp.print_chess_victor
         puts "\n"
-        opp.print_chess_loser
+        if opp.chess_loser == []
+          puts "    ############  Congrats, you won every chess battle!  ############"
+          puts "\n"
+        else
+          opp.print_chess_loser
+        end
       end
     when "4"
       if opp.arm_wrestling_victor.length == 0
         puts "Looks like your strength wasn't enough...you lost every arm wrestling battle."
         sleep(0.75)
-        puts
+        puts "\n"
+        opp.print_arm_wrestling_loser
+        sleep(0.75)
+        puts "\n"
         max_strength
       else
         opp.print_arm_wrestling_victor
+        puts "\n"
+        if opp.arm_wrestling_loser == []
+          puts "    ############  Congrats, you won every arm wrestling battle!  ############"
+          puts "\n"
+        else
+          opp.print_arm_wrestling_loser
+        end
       end
     when "5"
       if opp.speed_walking_victor.length == 0
         puts "Looks like your speed wasn't enough...you lost every speed walking battle."
         sleep(0.75)
-        puts
+        puts "\n"
+        opp.print_speed_walking_loser
+        sleep(0.75)
       else
         opp.print_speed_walking_victor
+        puts "\n"
+        if opp.speed_walking_loser == []
+          puts "    ############  Congrats, you won every speed walking battle!  ############"
+          puts "\n"
+        else
+          opp.print_speed_walking_loser
+        end
       end
     else
       puts "Please select from one of the options."
@@ -274,12 +298,12 @@ def initial_battle
       puts "Sorry this isn't as bloody as you hoped."
       opp.battle_15_heroes
       sleep(0.75)
-      puts "..."
-      sleep(0.75)
-      puts "..."
-      sleep(0.75)
-      puts "..."
-      sleep(0.75)
+      puts "\n"
+      3.times do
+        puts "...battle..."
+        sleep(0.75)
+      end
+      puts "\n"
       puts "15 battles later and you're still standing!"
       sleep(1)
     when 'n'

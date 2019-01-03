@@ -53,8 +53,16 @@ class Opponent < ActiveRecord::Base
     self.superheros.where("strength < ?", self.strength).distinct
   end
 
+  def arm_wrestling_loser
+    self.superheros.where("strength > ?", self.strength).distinct
+  end
+
   def speed_walking_victor
     self.superheros.where("speed < ?", self.speed).distinct
+  end
+
+  def speed_walking_loser
+    self.superheros.where("speed > ?", self.speed).distinct
   end
 
   def print_chess_victor
@@ -78,6 +86,13 @@ class Opponent < ActiveRecord::Base
     puts "\n"
   end
 
+  def print_arm_wrestling_loser
+    puts "You lost to the following Superheroes in a super veiny arm wrestling match:"
+    puts "\n"
+    arm_wrestling_loser.each {|hero| puts " - #{hero.name} -- Your strength (#{self.strength}) was no match for theirs (#{hero.strength})"}
+    puts "\n"
+  end
+
   def print_speed_walking_victor
     puts "You beat the following Superheroes in a super thigh-burning speed walking race:"
     puts "\n"
@@ -85,4 +100,10 @@ class Opponent < ActiveRecord::Base
     puts "\n"
   end
 
+  def print_speed_walking_loser
+    puts "You lost to the following Superheroes in a super thigh-burning speed walking race:"
+    puts "\n"
+    speed_walking_loser.each {|hero| puts " - #{hero.name} -- Your speed (#{self.speed}) was no match for theirs (#{hero.speed})"}
+    puts "\n"
+  end
 end
