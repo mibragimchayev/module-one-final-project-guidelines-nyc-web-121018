@@ -32,10 +32,6 @@ class Opponent < ActiveRecord::Base
     names = self.battles.map {|battle| battle.superhero.name}
     unique_names = names.uniq
   end
-  # def battled_superheroes
-  #   names = self.battles.map {|battle| battle.superhero.name}
-  #   unique_names = names.uniq
-  # end
 
   def print_battled_heroes_names
     puts "You battled with the following Superheroes: "
@@ -47,6 +43,10 @@ class Opponent < ActiveRecord::Base
 
   def chess_victor
     self.superheros.where("intelligence < ?", self.intelligence).distinct
+  end
+
+  def chess_loser
+    self.superheros.where("intelligence > ?", self.intelligence).distinct
   end
 
   def arm_wrestling_victor
@@ -61,6 +61,13 @@ class Opponent < ActiveRecord::Base
     puts "You beat the following Superheroes in a super intense game of chess:"
     puts "\n"
     chess_victor.each {|hero| puts " - #{hero.name} -- Their intelligence (#{hero.intelligence}) was no match for yours (#{self.intelligence})"}
+    puts "\n"
+  end
+
+  def print_chess_loser
+    puts "You lost to the following Superheroes in a super intense game of chess:"
+    puts "\n"
+    chess_loser.each {|hero| puts " - #{hero.name} -- Your intelligence (#{self.intelligence}) was no match for theirs (#{hero.intelligence})"}
     puts "\n"
   end
 

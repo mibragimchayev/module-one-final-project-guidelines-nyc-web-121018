@@ -77,11 +77,11 @@ def get_opponent_intelligence
   print "Enter your selection: "
   input = gets.chomp
   if input == "1"
-    intelligence = 5
+    intelligence = 65
   elsif input == "2"
-    intelligence = 90
+    intelligence = 95
   elsif input == "3"
-    intelligence = 70
+    intelligence = 80
   else
     puts "Please select one of the options."
     puts "\n"
@@ -107,7 +107,7 @@ def get_opponent_strength
   print "Enter your selection: "
   input = gets.chomp
   if input == "1"
-    strength = 20
+    strength = 5
   elsif input == "2"
     strength = 70
   elsif input == "3"
@@ -185,7 +185,7 @@ def end_game
 end
 
 def game_over
-  puts "GAME OVER"                                     
+  puts "GAME OVER"
 end
 
 def game_choices
@@ -197,9 +197,9 @@ def game_choices
   puts "\n"
   puts "  1. See your stats"
   puts "  2. See all of the Superheroes you've battled"
-  puts "  3. See Superheroes you beat in a game of chess"
-  puts "  4. See Superheroes you beat in an arm wrestling match"
-  puts "  5. See Superheroes you beat in a friendly race of speed walking"
+  puts "  3. See chess battle results"
+  puts "  4. See arm wrestling battle results"
+  puts "  5. See speed walking battle results"
   puts "  6. Battle a new set of Superheroes in chess, arm wrestling, and speed walking"
   puts "\n"
   79.times {print "#"}
@@ -222,11 +222,33 @@ def choice_selections
     when "2"
       opp.print_battled_heroes_names
     when "3"
-      opp.print_chess_victor
+      if opp.chess_victor.length == 0
+        puts "Looks like your intelligence wasn't enough...you lost every chess battle."
+        sleep(0.75)
+        puts
+        opp.print_chess_loser
+      else
+        opp.print_chess_victor
+        puts "\n"
+        opp.print_chess_loser
+      end
     when "4"
-      opp.print_arm_wrestling_victor
+      if opp.arm_wrestling_victor.length == 0
+        puts "Looks like your strength wasn't enough...you lost every arm wrestling battle."
+        sleep(0.75)
+        puts
+        max_strength
+      else
+        opp.print_arm_wrestling_victor
+      end
     when "5"
-      opp.print_speed_walking_victor
+      if opp.speed_walking_victor.length == 0
+        puts "Looks like your speed wasn't enough...you lost every speed walking battle."
+        sleep(0.75)
+        puts
+      else
+        opp.print_speed_walking_victor
+      end
     else
       puts "Please select from one of the options."
       puts "\n"
@@ -249,7 +271,7 @@ def initial_battle
   puts "\n"
   case input
     when 'y'
-      puts "Sorry this isn't as bloody as you hoped"
+      puts "Sorry this isn't as bloody as you hoped."
       opp.battle_15_heroes
       sleep(0.75)
       puts "..."
@@ -275,4 +297,48 @@ end
 def game_time
   game_choices
   choice_selections
+end
+
+def max_strength
+  puts "Would you like to buy P90X, join CrossFit, and train with Mr. Miyagi? (y/n)"
+  puts "\n"
+  print "Enter your selection: "
+  input = gets.chomp
+  case input
+  when 'y'
+    puts "\n"
+    strength_training
+  when 'n'
+    puts "\n"
+    puts "Sure...if you can live with yourself..."
+    sleep(0.75)
+    puts "\n"
+  end
+end
+
+def strength_training
+  5.times do
+    puts "...training..."
+    sleep(1)
+  end
+  puts "\n"
+  old_strength = opp.strength
+  opp.update(strength: 200)
+  puts "Strength training complete!"
+  puts "\n"
+  puts "Looks like the training paid off!"
+  puts "Strength before training: #{old_strength}"
+  puts "Stength after training: #{opp.strength}"
+  sleep(1)
+  puts "\n"
+  puts "You requested a rematch of every previous arm wrestling battle."
+  puts "\n"
+  sleep(0.75)
+  3.times do
+    puts "...biceps..."
+    sleep(1)
+  end
+  puts "\n"
+  puts "Arm wrestling rematches complete - make sure to check which Superheroes you beat!"
+  puts "\n"
 end
