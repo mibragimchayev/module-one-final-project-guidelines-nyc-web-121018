@@ -1,17 +1,17 @@
 require_relative '../config/environment'
 
-def run
-  # welcome
-  # user = Opponent.create_opponent
-  # # binding.pry
-  # questions_complete
-  # user.show_stats
-  game_time
-end
-
-# # TODO: figure out where this goes and how to implement
+# def run
+#   welcome
+#   user = Opponent.create_opponent
+#   # binding.pry
+#   questions_complete
+#   user.show_stats
+#   initial_battle
+# end
+#
+# run
 game = "y"
 while game == "y"
-  run
-  end_game # ENABLE this feature later
+  game_time
+  game = end_game # ENABLE this feature later
 end

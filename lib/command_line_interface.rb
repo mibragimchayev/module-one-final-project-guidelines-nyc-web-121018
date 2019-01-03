@@ -160,21 +160,23 @@ end
 
 def end_game
   puts "Continue? (y/n)"
-  game = gets.chomp
-  if game != 'y' && game != 'n'
+  input = gets.chomp
+  if input != 'y' && input != 'n'
     puts "Please select 'y' or 'n'"
     end_game
   end
-  game
+  input
 end
 
 def game_choices
+  puts "\n"
   puts "What would you like to do?"
-  puts "1. Battle some Superheroes in chess, arm wrestling, and speed walking" # run populate_battles_table from seeds.rb
-  puts "2. See all of the Superheroes I've battled"
-  puts "3. See Superheroes I've beat in a game of chess"
-  puts "4. See Superheroes I've beat in arm wrestling"
-  puts "5. See Superheroes I've beat in a friendly game of speed walking"
+  puts "1. See your stats"
+  puts "2. See all of the Superheroes you've battled"
+  puts "3. See Superheroes you beat in a game of chess"
+  puts "4. See Superheroes you beat in an arm wrestling match"
+  puts "5. See Superheroes you beat in a friendly race of speed walking"
+  puts "6. Battle a new set of Superheroes in chess, arm wrestling, and speed walking"
 end
 
 def choice_selections
@@ -182,17 +184,52 @@ def choice_selections
   puts "\n"
   case input
     when "1"
+      opp.show_stats
+    when "6"
       opp.battle_30_heroes
+      sleep(0.5)
+      puts "30 battles later and you're still standing!"
+      puts "\n"
     when "2"
       opp.print_battled_heroes_names
     when "3"
+      opp.print_chess_victor
     when "4"
+      opp.print_arm_wrestling_victor
     when "5"
+      opp.print_speed_walking_victor
     else
       puts "Please select from one of the options."
       puts "\n"
       sleep(0.75)
       game_time
+  end
+end
+
+def initial_battle
+  puts "Humane Battle Mode Activated..."
+  sleep(0.75)
+  puts "You will be hashing it out in games of chess, arm wrestling matches, and speed walking races"
+  sleep(0.75)
+  puts "Ready to battle?! (y/n)"
+  input = gets.chomp
+  puts "\n"
+  case input
+    when 'y'
+      puts "Sorry this isn't as bloody as you hoped"
+      opp.battle_30_heroes
+      sleep(0.75)
+      puts "30 battles later and you're still standing!"
+      sleep(1)
+    when 'n'
+      puts "Too bad!"
+      sleep(0.75)
+      puts "\n"
+      initial_battle
+    else
+      "No way out of this, you'll just have to choose 'y'..."
+      puts "\n"
+      initial_battle
   end
 end
 

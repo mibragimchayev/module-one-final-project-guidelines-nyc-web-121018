@@ -13,14 +13,12 @@ class Opponent < ActiveRecord::Base
 
   def show_stats
     puts "Here are your stats:"
-    puts "Name: #{self.name}"
-    puts "Intelligence: #{self.intelligence}"
-    puts "Strength: #{self.strength}"
-    puts "Speed: #{self.speed}"
+    puts " - Name: #{self.name}"
+    puts " - Intelligence: #{self.intelligence}"
+    puts " - Strength: #{self.strength}"
+    puts " - Speed: #{self.speed}"
     puts "\n"
   end
-
-
 
   def battle_30_heroes
     Battle.delete_all #redundancy check to clear previous game battles
@@ -36,20 +34,43 @@ class Opponent < ActiveRecord::Base
 
   def print_battled_heroes_names
     puts "You battled with the following Superheroes: "
+    puts "\n"
     sleep(0.75)
     battled_superheroes.each {|name| puts " - #{name}"}
     puts "\n"
   end
 
   def chess_victor
-    self.battled_superheroes.where("intelligence < ?", self.intelligence)
+    self.superheros.where("intelligence < ?", self.intelligence).distinct
   end
 
-  def arms_wrestling_victor
-    self.battled_superheroes.where("strength < ?", self.strength)
+  def arm_wrestling_victor
+    self.superheros.where("strength < ?", self.strength).distinct
   end
 
   def speed_walking_victor
-    self.battled_superheroes.where("speed < ?", self.speed)
+    self.superheros.where("speed < ?", self.speed).distinct
   end
+
+  def print_chess_victor
+    puts "You beat the following Superheroes in a super intense game of chess:"
+    puts "\n"
+    chess_victor.each {|hero| puts " - #{hero.name} -- Their intelligence (#{hero.intelligence}) was no match for yours (#{opp.intelligence})"}
+    puts "\n"
+  end
+
+  def print_arm_wrestling_victor
+    puts "You beat the following Superheroes in a super veiny arm wrestling match:"
+    puts "\n"
+    arm_wrestling_victor.each {|hero| puts " - #{hero.name} -- Their strength (#{hero.strength}) was no match for yours (#{opp.strength})"}
+    puts "\n"
+  end
+
+  def print_speed_walking_victor
+    puts "You beat the following Superheroes in a super thigh-burning speed walking race:"
+    puts "\n"
+    speed_walking_victor.each {|hero| puts " - #{hero.name} -- Their speed (#{hero.speed}) was no match for yours (#{opp.speed})"}
+    puts "\n"
+  end
+
 end
