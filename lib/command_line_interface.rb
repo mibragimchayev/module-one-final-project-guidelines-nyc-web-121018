@@ -1,5 +1,3 @@
-# require_relative '../db/seeds.rb'
-
 def welcome
   # puts out a welcome message here!
   Battle.delete_all # clears all battles from previous user input
@@ -67,7 +65,7 @@ def get_opponent_name
 end
 
 def get_opponent_intelligence
-  puts "Answer the following questions:"
+  puts "Answer the following questions to see what you're made of:"
   puts "\n"
   sleep(0.75)
   puts "What is Newton's Second Law?"
@@ -159,6 +157,7 @@ end
 
 def questions_complete
   puts "Contender profile completed."
+  sleep(1)
   puts "\n"
 end
 
@@ -171,27 +170,40 @@ def end_game
   puts
   print "Enter your selection: "
   input = gets.chomp
-  puts game_over if input == 'n'
-  if input != 'y' && input != 'n'
-    puts "Please select 'y' or 'n'"
+  case input
+  when 'y'
+    'y'
+  when 'n'
+    game_over
+    'n'
+  else
+    puts "You entered '#{input}'. Please enter either 'y' or 'n'"
+    puts
+    sleep(0.75)
     end_game
   end
-  input
 end
 
-def game_over # TODO: find game over ASCII art
-  "game over"
+def game_over
+  puts "GAME OVER"                                     
 end
 
 def game_choices
   puts "\n"
+  79.times {print "#"}
+  puts "\n\n"
   puts "What would you like to do?"
-  puts "1. See your stats"
-  puts "2. See all of the Superheroes you've battled"
-  puts "3. See Superheroes you beat in a game of chess"
-  puts "4. See Superheroes you beat in an arm wrestling match"
-  puts "5. See Superheroes you beat in a friendly race of speed walking"
-  puts "6. Battle a new set of Superheroes in chess, arm wrestling, and speed walking"
+  # sleep(0.75)
+  puts "\n"
+  puts "  1. See your stats"
+  puts "  2. See all of the Superheroes you've battled"
+  puts "  3. See Superheroes you beat in a game of chess"
+  puts "  4. See Superheroes you beat in an arm wrestling match"
+  puts "  5. See Superheroes you beat in a friendly race of speed walking"
+  puts "  6. Battle a new set of Superheroes in chess, arm wrestling, and speed walking"
+  puts "\n"
+  79.times {print "#"}
+  puts "\n"
 end
 
 def choice_selections
@@ -203,9 +215,9 @@ def choice_selections
     when "1"
       opp.show_stats
     when "6"
-      opp.battle_30_heroes
+      opp.battle_15_heroes
       sleep(0.5)
-      puts "30 battles later and you're still standing!"
+      puts "15 more battles? You're unstoppable!"
       puts "\n"
     when "2"
       opp.print_battled_heroes_names
@@ -225,9 +237,11 @@ end
 
 def initial_battle
   puts "Humane Battle Mode Activated..."
-  sleep(0.75)
-  puts "You will be hashing it out in games of chess, arm wrestling matches, and speed walking races"
-  sleep(0.75)
+  sleep(1)
+  puts
+  puts "You will be hashing it out in games of chess, arm wrestling matches, and speed walking races!"
+  sleep(1)
+  puts
   puts "Ready to battle?! (y/n)"
   puts
   print "Enter your selection: "
@@ -236,22 +250,23 @@ def initial_battle
   case input
     when 'y'
       puts "Sorry this isn't as bloody as you hoped"
-      opp.battle_30_heroes
+      opp.battle_15_heroes
       sleep(0.75)
       puts "..."
       sleep(0.75)
       puts "..."
       sleep(0.75)
       puts "..."
-      puts "30 battles later and you're still standing!"
+      sleep(0.75)
+      puts "15 battles later and you're still standing!"
       sleep(1)
     when 'n'
-      puts "Too bad!"
+      puts "No way out of this, you'll just have to choose 'y'..."
       sleep(0.75)
       puts "\n"
       initial_battle
     else
-      "No way out of this, you'll just have to choose 'y'..."
+      puts "No way out...choose 'y'..."
       puts "\n"
       initial_battle
   end

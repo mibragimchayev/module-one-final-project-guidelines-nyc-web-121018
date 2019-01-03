@@ -18,11 +18,12 @@ class Opponent < ActiveRecord::Base
     puts " - Strength: #{self.strength}"
     puts " - Speed: #{self.speed}"
     puts "\n"
+    sleep(0.75)
   end
 
-  def battle_30_heroes
+  def battle_15_heroes
     Battle.delete_all #redundancy check to clear previous game battles
-    30.times do
+    15.times do
       Battle.create(name: "The Battle of #{Faker::Address.unique.city}", opponent_id: Opponent.last.id, superhero_id: Superhero.ids.sample)
     end
   end
@@ -31,6 +32,10 @@ class Opponent < ActiveRecord::Base
     names = self.battles.map {|battle| battle.superhero.name}
     unique_names = names.uniq
   end
+  # def battled_superheroes
+  #   names = self.battles.map {|battle| battle.superhero.name}
+  #   unique_names = names.uniq
+  # end
 
   def print_battled_heroes_names
     puts "You battled with the following Superheroes: "
