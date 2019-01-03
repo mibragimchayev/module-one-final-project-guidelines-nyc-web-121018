@@ -55,6 +55,8 @@ end
 
 def get_opponent_name
   puts "Contender...what name shall be written on your tombstone?"
+  puts
+  print "Enter your name: "
   name = gets.chomp
   puts "\n"
   sleep(0.75)
@@ -73,6 +75,8 @@ def get_opponent_intelligence
   puts "1. Dunno"
   puts "2. F = ma"
   puts "3. E = mc^2"
+  puts
+  print "Enter your selection: "
   input = gets.chomp
   if input == "1"
     intelligence = 5
@@ -101,6 +105,8 @@ def get_opponent_strength
   puts "1. Pulling King Arthur's sword from the stone"
   puts "2. Knocking out Muhammad Ali"
   puts "3. Pulling your underwear over your head"
+  puts
+  print "Enter your selection: "
   input = gets.chomp
   if input == "1"
     strength = 20
@@ -129,6 +135,8 @@ def get_opponent_speed
   puts "1. Faster than the speed of light"
   puts "2. 88 mph"
   puts "3. Faster than it takes me to get home during rush hour"
+  puts
+  print "Enter your selection: "
   input = gets.chomp
   if input == "1"
     speed = 60
@@ -160,12 +168,19 @@ end
 
 def end_game
   puts "Continue? (y/n)"
+  puts
+  print "Enter your selection: "
   input = gets.chomp
+  puts game_over if input == 'n'
   if input != 'y' && input != 'n'
     puts "Please select 'y' or 'n'"
     end_game
   end
   input
+end
+
+def game_over # TODO: find game over ASCII art
+  "game over"
 end
 
 def game_choices
@@ -180,6 +195,8 @@ def game_choices
 end
 
 def choice_selections
+  puts
+  print "Enter your selection: "
   input = gets.chomp
   puts "\n"
   case input
@@ -212,6 +229,8 @@ def initial_battle
   puts "You will be hashing it out in games of chess, arm wrestling matches, and speed walking races"
   sleep(0.75)
   puts "Ready to battle?! (y/n)"
+  puts
+  print "Enter your selection: "
   input = gets.chomp
   puts "\n"
   case input
@@ -219,6 +238,11 @@ def initial_battle
       puts "Sorry this isn't as bloody as you hoped"
       opp.battle_30_heroes
       sleep(0.75)
+      puts "..."
+      sleep(0.75)
+      puts "..."
+      sleep(0.75)
+      puts "..."
       puts "30 battles later and you're still standing!"
       sleep(1)
     when 'n'

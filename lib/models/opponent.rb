@@ -23,7 +23,7 @@ class Opponent < ActiveRecord::Base
   def battle_30_heroes
     Battle.delete_all #redundancy check to clear previous game battles
     30.times do
-      Battle.create(name: "Battle of #{Faker::Address.unique.city}", opponent_id: Opponent.last.id, superhero_id: Superhero.ids.sample)
+      Battle.create(name: "The Battle of #{Faker::Address.unique.city}", opponent_id: Opponent.last.id, superhero_id: Superhero.ids.sample)
     end
   end
 
@@ -55,21 +55,21 @@ class Opponent < ActiveRecord::Base
   def print_chess_victor
     puts "You beat the following Superheroes in a super intense game of chess:"
     puts "\n"
-    chess_victor.each {|hero| puts " - #{hero.name} -- Their intelligence (#{hero.intelligence}) was no match for yours (#{opp.intelligence})"}
+    chess_victor.each {|hero| puts " - #{hero.name} -- Their intelligence (#{hero.intelligence}) was no match for yours (#{self.intelligence})"}
     puts "\n"
   end
 
   def print_arm_wrestling_victor
     puts "You beat the following Superheroes in a super veiny arm wrestling match:"
     puts "\n"
-    arm_wrestling_victor.each {|hero| puts " - #{hero.name} -- Their strength (#{hero.strength}) was no match for yours (#{opp.strength})"}
+    arm_wrestling_victor.each {|hero| puts " - #{hero.name} -- Their strength (#{hero.strength}) was no match for yours (#{self.strength})"}
     puts "\n"
   end
 
   def print_speed_walking_victor
     puts "You beat the following Superheroes in a super thigh-burning speed walking race:"
     puts "\n"
-    speed_walking_victor.each {|hero| puts " - #{hero.name} -- Their speed (#{hero.speed}) was no match for yours (#{opp.speed})"}
+    speed_walking_victor.each {|hero| puts " - #{hero.name} -- Their speed (#{hero.speed}) was no match for yours (#{self.speed})"}
     puts "\n"
   end
 
