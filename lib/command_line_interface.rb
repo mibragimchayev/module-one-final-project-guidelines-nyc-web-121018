@@ -185,7 +185,9 @@ def end_game
 end
 
 def game_over
-  puts "GAME OVER"
+  puts
+  puts "                    GAME OVER"
+  puts
 end
 
 def game_choices
@@ -215,9 +217,9 @@ def choice_selections
     when "1"
       opp.show_stats
     when "6"
-      opp.battle_15_heroes
+      opp.battle_heroes
       sleep(0.5)
-      puts "15 more battles? You're unstoppable!"
+      puts "More battles?! You're unstoppable!"
       puts "\n"
     when "2"
       opp.print_battled_heroes_names
@@ -296,7 +298,7 @@ def initial_battle
   case input
     when 'y'
       puts "Sorry this isn't as bloody as you hoped."
-      opp.battle_15_heroes
+      opp.battle_heroes
       sleep(0.75)
       puts "\n"
       3.times do
@@ -304,7 +306,7 @@ def initial_battle
         sleep(0.75)
       end
       puts "\n"
-      puts "15 battles later and you're still standing!"
+      puts "Your left shoulder hurts and your right nostril itches, but you're still standing!"
       sleep(1)
     when 'n'
       puts "No way out of this, you'll just have to choose 'y'..."
@@ -352,7 +354,7 @@ def strength_training
   puts "\n"
   puts "Looks like the training paid off!"
   puts "Strength before training: #{old_strength}"
-  puts "Stength after training: #{opp.strength}"
+  puts "Strength after training: #{opp.strength}"
   sleep(1)
   puts "\n"
   puts "You requested a rematch of every previous arm wrestling battle."

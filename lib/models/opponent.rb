@@ -21,7 +21,7 @@ class Opponent < ActiveRecord::Base
     sleep(0.75)
   end
 
-  def battle_15_heroes
+  def battle_heroes
     Battle.delete_all #redundancy check to clear previous game battles
     15.times do
       Battle.create(name: "The Battle of #{Faker::Address.unique.city}", opponent_id: Opponent.last.id, superhero_id: Superhero.ids.sample)

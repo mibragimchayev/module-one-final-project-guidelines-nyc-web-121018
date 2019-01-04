@@ -6,9 +6,10 @@ Features:
 2. Ask questions to build user stats
 3. Store user stats
 4. Access user stats
-5. Create 30 randomly generated fights
+5. Create 15 randomly generated fights
 6. See all of the Superheroes you've battled
-7. See Superheroes you beat in a game of chess
-8. See Superheroes you beat in an arm wrestling match
-9. See Superheroes you beat in a friendly race of speed walking
+7. See chess battle results
+8. See arm wrestling battle results
+9. See speed walking battle results
 10. Battle new set of randomly generated superheroes, which changes output of 6 - 9
+11. If didn't win any arm wrestling battles, can undergo training to max strength to defeat all previously battled in rematch.
