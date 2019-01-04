@@ -1,9 +1,11 @@
  # require 'rest-client'
  # require 'json'
+ require 'dotenv'
 
+API_KEY = ENV['API_KEY']
 
 def get_superhero(id)
-  superhero_string = RestClient.get("https://superheroapi.com/api.php/10156542011821195/#{id}")
+  superhero_string = RestClient.get("https://superheroapi.com/api.php/#{API_KEY}/#{id}")
   superhero_hash = JSON.parse(superhero_string)
 end
 
