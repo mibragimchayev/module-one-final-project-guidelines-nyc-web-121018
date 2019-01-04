@@ -175,7 +175,6 @@ def end_game
     'y'
   when 'n'
     game_over
-    'n'
   else
     puts "You entered '#{input}'. Please enter either 'y' or 'n'"
     puts
@@ -183,12 +182,6 @@ def end_game
     end_game
   end
 end
-
-# def game_over
-#   puts
-#   puts "                    GAME OVER"
-#   puts
-# end
 
 def game_over
   puts "
@@ -212,7 +205,7 @@ def game_over
              GGG::::::GGG:::G a::::::::::aa:::am::::m   m::::m   m::::m  ee:::::::::::::e          OO:::::::::OO             v:::v         ee:::::::::::::e   r:::::r
                 GGGGGG   GGGG  aaaaaaaaaa  aaaammmmmm   mmmmmm   mmmmmm    eeeeeeeeeeeeee            OOOOOOOOO                vvv            eeeeeeeeeeeeee   rrrrrrr
 
-  
+
     "
 end
 
