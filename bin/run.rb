@@ -13,5 +13,5 @@ run
 game = "y"
 while game == "y"
   game_time
-  game = end_game # ENABLE this feature later
+  game = end_game
 end
