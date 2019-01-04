@@ -363,7 +363,7 @@ end
 
 def strength_training
   5.times do
-    puts "...training..."
+    puts "...wax on, wax off..."
     sleep(1)
   end
   puts "\n"
