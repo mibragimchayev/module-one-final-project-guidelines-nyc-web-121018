@@ -286,30 +286,34 @@ def initial_battle
   puts "Ready to battle?! (y/n)"
   puts
   print "Enter your selection: "
-  input = gets.chomp
-  puts "\n"
-  case input
-    when 'y'
-      puts "Sorry this isn't as bloody as you hoped."
-      opp.battle_heroes
-      sleep(0.75)
-      puts "\n"
-      3.times do
-        puts "...battle..."
+  while input = gets.chomp
+    case input
+      when 'y'
+        puts
+        puts "Sorry this isn't as bloody as you hoped."
+        opp.battle_heroes
         sleep(0.75)
-      end
-      puts "\n"
-      puts "Your left shoulder hurts and your right nostril itches, but you're still standing!"
-      sleep(1)
-    when 'n'
-      puts "No way out of this, you'll just have to choose 'y'..."
-      sleep(0.75)
-      puts "\n"
-      initial_battle
-    else
-      puts "No way out...choose 'y'..."
-      puts "\n"
-      initial_battle
+        puts "\n"
+        3.times do
+          puts "...battle..."
+          sleep(0.75)
+        end
+        puts "\n"
+        puts "Your left shoulder hurts and your right nostril itches, but you're still standing!"
+        sleep(1)
+        break
+      when 'n'
+        puts
+        puts "No way out of this, you'll just have to choose 'y'..."
+        sleep(0.75)
+        puts "\n"
+        print "Enter your selection: "
+      else
+        puts
+        puts "No way out...choose 'y'..."
+        puts "\n"
+        print "Enter your selection: "
+    end
   end
 end
 
