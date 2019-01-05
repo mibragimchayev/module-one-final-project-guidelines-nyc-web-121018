@@ -64,6 +64,34 @@ def get_opponent_name
   name
 end
 
+def get_response(x,y,z, message)
+  prompt = "Enter your selection: "
+  print prompt
+  while input = gets.chomp
+    case input
+    when "1"
+      output = x
+      break
+    when "2"
+      output = y
+      break
+    when "3"
+      output = z
+      break
+    else
+      puts "You entered '#{input}'. Please enter one of the options."
+      puts "\n"
+      print prompt
+    end
+  end
+  sleep(0.75)
+  puts "\n"
+  puts message
+  puts "\n"
+  sleep(0.75)
+  output  
+end
+
 def get_opponent_intelligence
   puts "Answer the following questions to see what you're made of:"
   puts "\n"
@@ -74,25 +102,7 @@ def get_opponent_intelligence
   puts "2. F = ma"
   puts "3. E = mc^2"
   puts
-  print "Enter your selection: "
-  input = gets.chomp
-  if input == "1"
-    intelligence = 65
-  elsif input == "2"
-    intelligence = 95
-  elsif input == "3"
-    intelligence = 80
-  else
-    puts "Please select one of the options."
-    puts "\n"
-    get_opponent_intelligence
-  end
-  sleep(0.75)
-  puts "\n"
-  puts "Interesting..."
-  puts "\n"
-  sleep(0.75)
-  intelligence
+  get_response(65, 95, 80, "Interesting...")
 end
 
 def get_opponent_strength
@@ -104,25 +114,7 @@ def get_opponent_strength
   puts "2. Knocking out Muhammad Ali"
   puts "3. Pulling your underwear over your head"
   puts
-  print "Enter your selection: "
-  input = gets.chomp
-  if input == "1"
-    strength = 5
-  elsif input == "2"
-    strength = 70
-  elsif input == "3"
-    strength = 90
-  else
-    puts "Please select one of the options."
-    puts "\n"
-    get_opponent_strength
-  end
-  sleep(0.75)
-  puts "\n"
-  puts "Well...no, but I'm curious where this is going..."
-  puts "\n"
-  sleep(0.75)
-  strength
+  get_response(5, 70, 90, "Well...no, but I'm curious where this is going...")
 end
 
 def get_opponent_speed
@@ -134,25 +126,7 @@ def get_opponent_speed
   puts "2. 88 mph"
   puts "3. Faster than it takes me to get home during rush hour"
   puts
-  print "Enter your selection: "
-  input = gets.chomp
-  if input == "1"
-    speed = 60
-  elsif input == "2"
-    speed = 90
-  elsif input == "3"
-    speed = 30
-  else
-    puts "Please select one of the options."
-    puts "\n"
-    get_opponent_speed
-  end
-  sleep(0.75)
-  puts "\n"
-  puts "Good choice!"
-  puts "\n"
-  sleep(0.75)
-  speed
+  get_response(60, 90, 30, "Good choice!")
 end
 
 def questions_complete
