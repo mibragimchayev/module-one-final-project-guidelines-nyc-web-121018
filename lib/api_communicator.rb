@@ -5,7 +5,7 @@
 API_KEY = ENV['API_KEY']
 
 def get_superhero(id)
-  superhero_string = RestClient.get("https://superheroapi.com/api.php/#{API_KEY}/#{id}")
+  superhero_string = RestClient.get("https://superheroapi.com/api.php/#{API_KEY}/#{id}/powerstats")
   superhero_hash = JSON.parse(superhero_string)
 end
 
@@ -16,13 +16,13 @@ def get_hero_name(id)
 end
 
 def get_hero_intelligence(id)
-  get_superhero(id)["powerstats"]["intelligence"]
+  get_superhero(id)["intelligence"]
 end
 
 def get_hero_strength(id)
-  get_superhero(id)["powerstats"]["strength"]
+  get_superhero(id)["strength"]
 end
 
 def get_hero_speed(id)
-  get_superhero(id)["powerstats"]["speed"]
+  get_superhero(id)["speed"]
 end
