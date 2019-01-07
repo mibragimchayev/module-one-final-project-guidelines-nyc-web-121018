@@ -1,6 +1,6 @@
 def welcome
   # puts out a welcome message here!
-  Battle.delete_all # clears all battles from previous user input
+  #Battle.delete_all # clears all battles from previous user input
   puts "
                    `;###################################,                                  `###################################i.
                      .*xWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW:                                  .WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWM+,
@@ -196,6 +196,7 @@ def game_choices
   puts "  4. See arm wrestling battle results"
   puts "  5. See speed walking battle results"
   puts "  6. Battle a new set of Superheroes in chess, arm wrestling, and speed walking"
+  puts "  7. Exit Game"  
   puts "\n"
   79.times {print "#"}
   puts "\n"
@@ -209,11 +210,6 @@ def choice_selections
   case input
     when "1"
       opp.show_stats
-    when "6"
-      opp.battle_heroes
-      sleep(0.5)
-      puts "More battles?! You're unstoppable!"
-      puts "\n"
     when "2"
       opp.print_battled_heroes_names
     when "3"
@@ -268,15 +264,24 @@ def choice_selections
           opp.print_speed_walking_loser
         end
       end
+    when "6"
+      opp.battle_heroes
+      sleep(0.5)
+      puts "More battles?! You're unstoppable!"
+      puts "\n"
+    when "7"
+      game_over
+      return "n"
     else
       puts "Please select from one of the options."
       puts "\n"
       sleep(0.75)
-      game_time
   end
+  return "y"
 end
 
 def initial_battle
+  Battle.delete_all # clears all battles from previous user input
   puts "Humane Battle Mode Activated..."
   sleep(1)
   puts
